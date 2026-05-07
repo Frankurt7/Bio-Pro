@@ -9,6 +9,8 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianG
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
+import { BrandLogo } from '../brand-logo';
+
 export const DashboardView = () => {
   const { latestEntry, allEntries, user, weightDiff } = useDashboard();
   const [selectedMetric, setSelectedMetric] = useState<{ label: string, key: string, unit: string } | null>(null);
@@ -68,11 +70,14 @@ export const DashboardView = () => {
               className="glass-card w-full p-6 relative z-10 border-brand-cyan/30"
             >
               <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h3 className="text-2xl font-display font-black uppercase italic tracking-tighter text-white">
-                    {selectedMetric.label} <span className="text-brand-cyan">PRO</span>
-                  </h3>
-                  <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1 font-black">Nivel de Evolución Lograda</p>
+                <div className="flex items-center gap-3">
+                  <BrandLogo size={32} />
+                  <div>
+                    <h3 className="text-2xl font-display font-black uppercase italic tracking-tighter text-white">
+                      {selectedMetric.label} <span className="text-brand-cyan">PRO</span>
+                    </h3>
+                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest mt-1 font-black">Nivel de Evolución Lograda</p>
+                  </div>
                 </div>
                 <button onClick={() => setSelectedMetric(null)} className="p-2 glass-card rounded-xl text-gray-400">
                   <X size={20} />
@@ -134,11 +139,14 @@ export const DashboardView = () => {
       </AnimatePresence>
 
       {/* Header */}
-      <motion.header variants={itemVariants} className="flex flex-col gap-1 step-dashboard-header">
-        <p className="text-gray-400 text-xs font-medium uppercase tracking-tight">{todayFormatted}</p>
-        <h1 className="text-3xl font-display font-bold uppercase tracking-tight">
-          HOLA, <span className="neon-text">{user.name}</span>
-        </h1>
+      <motion.header variants={itemVariants} className="flex justify-between items-start step-dashboard-header">
+        <div className="flex flex-col gap-1">
+          <p className="text-gray-400 text-xs font-medium uppercase tracking-tight">{todayFormatted}</p>
+          <h1 className="text-3xl font-display font-bold uppercase tracking-tight">
+            HOLA, <span className="neon-text">{user.name}</span>
+          </h1>
+        </div>
+        <BrandLogo size={44} />
       </motion.header>
 
       {/* Level Card */}

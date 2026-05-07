@@ -12,23 +12,33 @@ export default defineConfig(({mode}) => {
       tailwindcss(),
       VitePWA({
         registerType: 'autoUpdate',
+        includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
         manifest: {
-          name: 'BioEvo: Tu Evolución',
+          name: 'BioEvo: Tu Evolución Corporal',
           short_name: 'BioEvo',
-          description: 'Bio-Avatar y composición corporal avanzada',
+          description: 'Seguimiento de composición corporal y bio-avatar 3D',
           theme_color: '#050a14',
           background_color: '#050a14',
           display: 'standalone',
+          orientation: 'portrait',
           icons: [
             {
-              src: 'https://api.dicebear.com/7.x/shapes/svg?seed=BioEvo&backgroundColor=050a14&shapeColor=00f2ff',
+              src: 'https://api.dicebear.com/7.x/shapes/svg?seed=BioEvoApp&backgroundColor=050a14&shapeColor=00f2ff',
               sizes: '192x192',
-              type: 'image/svg+xml'
+              type: 'image/svg+xml',
+              purpose: 'any'
             },
             {
-              src: 'https://api.dicebear.com/7.x/shapes/svg?seed=BioEvo&backgroundColor=050a14&shapeColor=00f2ff',
+              src: 'https://api.dicebear.com/7.x/shapes/svg?seed=BioEvoApp&backgroundColor=050a14&shapeColor=00f2ff',
               sizes: '512x512',
-              type: 'image/svg+xml'
+              type: 'image/svg+xml',
+              purpose: 'any'
+            },
+            {
+              src: 'https://api.dicebear.com/7.x/shapes/svg?seed=BioEvoApp&backgroundColor=050a14&shapeColor=00f2ff',
+              sizes: '512x512',
+              type: 'image/svg+xml',
+              purpose: 'maskable'
             }
           ]
         }
